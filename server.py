@@ -27,11 +27,14 @@ WEATHER = {
 
 DEFAULT_WEATHER = {'forecast': 'Kind of boring.', 'temp': '68F'}
 
+
 @app.route('/')
 def index():
     """Show our index page."""
 
     return render_template("index.html")
+
+
 
 
 @app.route('/fortune')
@@ -41,6 +44,8 @@ def fortune():
     return random.choice(FORTUNES)
 
 
+
+
 @app.route('/weather.json')
 def weather():
     """Return a weather-info dictionary for this zipcode."""
@@ -48,6 +53,8 @@ def weather():
     zipcode = request.args.get('zipcode')
     weather_info = WEATHER.get(zipcode, DEFAULT_WEATHER)
     return jsonify(weather_info)
+
+
 
 
 @app.route('/order-melons.json', methods=['POST'])
@@ -67,6 +74,12 @@ def order_melons():
         result_text = "You want to buy fewer than 1 melons? Huh?"
 
     return jsonify({'code': result_code, 'msg': result_text})
+
+
+
+
+
+
 
 
 if __name__ == "__main__":
