@@ -26,8 +26,8 @@ fortuneButton.addEventListener('click', showFortune);
 
 // PART 2: SHOW WEATHER
 
-function showWeather(evt) {
-  evt.preventDefault();
+function showWeather(evt) { 
+  evt.preventDefault();// BROWSER will send a GET request and expect HTML to come back otherwise
 
   // const url = '/weather.json';
   const zipcode = document.querySelector('#zipcode-field').value;
@@ -63,9 +63,9 @@ function orderMelons(evt) {
 
   fetch('/order-melons.json', {
     method: 'POST',
-    body: JSON.stringify(formAnswer),
+    body: JSON.stringify(formAnswer), //takes in an object and converts it to a string, how it actually gets sent to server
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json' //if you chose the right content-type, then you could use request.form.get in Flask
     },
   })
     .then((response) => response.json())
